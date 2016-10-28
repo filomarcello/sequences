@@ -70,7 +70,7 @@ class PureDNAseq(Sequence):
 
     def __init__(self, seq: str = '', type='DNA'):
         s = set(seq)
-        if s > SEQ_CHARS['DNA']:
+        if not s <= SEQ_CHARS[type]:
             exp = ''
             msg = 'Sequence contains non DNA characters.'
             raise SequenceException(exp, msg)
@@ -84,7 +84,7 @@ class PureRNAseq(Sequence):
     def __init__(self, seq: str = '', type='RNA'):
 
         s = set(seq)
-        if s > SEQ_CHARS['RNA']:
+        if not s <= SEQ_CHARS[type]:
             exp = ''
             msg = 'Sequence contains non RNA characters.'
             raise SequenceException(exp, msg)
@@ -97,7 +97,7 @@ class PureProteinSeq(Sequence):
 
     def __init__(self, seq: str = '', type='protein'):
         s = set(seq)
-        if s > SEQ_CHARS['protein']:
+        if not s <= SEQ_CHARS[type]:
             exp = ''
             msg = 'Sequence contains non protein characters.'
             raise SequenceException(exp, msg)
